@@ -13,9 +13,12 @@ public class InputView {
         return Console.readLine();
     }
 
-    public String readRound() {
+    public int readRound() {
         System.out.println(ROUND_MESSAGE);
-
-        return Console.readLine();
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 가능합니다.");
+        }
     }
 }
