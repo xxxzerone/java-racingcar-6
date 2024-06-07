@@ -25,7 +25,7 @@ class RankTest {
     @Test
     @DisplayName("woni 우승자 확인")
     void winner() {
-        List<Car> winner = Rank.winner(List.of(pobi, woni, jun));
+        List<Car> winner = Rank.winner(new Race(List.of(pobi, woni, jun)));
 
         assertThat(winner.size()).isEqualTo(1);
         assertThat(winner.get(0)).isEqualTo(woni);
@@ -35,7 +35,7 @@ class RankTest {
     @DisplayName("pobi, woni 우승자 확인")
     void winnerMultiple() {
         pobi.forward(5);
-        List<Car> winner = Rank.winner(List.of(pobi, woni, jun));
+        List<Car> winner = Rank.winner(new Race(List.of(pobi, woni, jun)));
 
         assertThat(winner.size()).isEqualTo(2);
         assertThat(winner).hasSameElementsAs(List.of(pobi, woni));

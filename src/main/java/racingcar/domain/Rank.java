@@ -5,7 +5,8 @@ import java.util.stream.Collectors;
 
 public class Rank {
 
-    public static List<Car> winner(List<Car> cars) {
+    public static List<Car> winner(Race race) {
+        List<Car> cars = race.getCars();
         int maxStep = getMaxStep(cars);
 
         return cars.stream()

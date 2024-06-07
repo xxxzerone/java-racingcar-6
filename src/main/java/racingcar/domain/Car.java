@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Car {
 
-    public final int FORWARD_AVAILABLE = 4;
+    private static final int MOVING_FORWARD = 4;
 
     private String name;
     private int step = 0;
@@ -12,9 +12,14 @@ public class Car {
     }
 
     public void forward(int step) {
-        if (step >= FORWARD_AVAILABLE) {
+        if (step >= MOVING_FORWARD) {
             this.step++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return name + " : ";
     }
 
     public String getName() {
