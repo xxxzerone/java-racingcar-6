@@ -27,10 +27,8 @@ public class RaceController {
         validate(separateCar);
 
         List<Car> cars = toList(separateCar);
-        int round = INPUTVIEW.readRound();
+        int round = toInt(INPUTVIEW.readRound());
         Race race = new Race(cars);
-
-        System.out.printf("%n실행 결과%n");
         raceStart(race, round);
 
         OUTPUTVIEW.winner(Rank.winner(race));
@@ -54,10 +52,21 @@ public class RaceController {
                 .toList();
     }
 
+    private int toInt(String inputRound) {
+        try {
+            return Integer.parseInt(inputRound);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자만 가능합니다.");
+        }
+    }
+
     private void raceStart(Race race, int round) {
+        System.out.printf("%n실행 결과%n");
+
         for (int i = 0; i < round; i++) {
             race.track();
             OUTPUTVIEW.resultRacing(race);
         }
     }
+
 }

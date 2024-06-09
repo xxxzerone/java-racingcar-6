@@ -8,8 +8,7 @@ import java.util.List;
 public class OutputView {
 
     public void resultRacing(Race race) {
-        List<Car> cars = race.getCars();
-        for (Car car : cars) {
+        for (Car car : race.getCars()) {
             System.out.println(car + stepToDash(car));
         }
     }
